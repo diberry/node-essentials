@@ -8,7 +8,7 @@ http.get(
     headers: {},
   },
   (res) => {
-    console.log("connected");
+    connected - statusCode: 200
     res.on("data", (chunk) => {
       console.log("chunk", "" + chunk);
     });
