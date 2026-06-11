@@ -29,6 +29,8 @@ And if you need to learn or improve your JavaScript skills, take a look at the [
 
 Because learning is a never-ending journey, we want to help you as much as we can to get you ready for what's coming next. You'll find here a great collection of resources you can use to build your knowledge.
 
+- ✅ **[How to Test Azure SDK Integration in JavaScript Applications](https://learn.microsoft.com/en-us/azure/developer/javascript/sdk/test-sdk-integration?tabs=test-with-node-testrunner)** — Learn testing best practices with Jest, Vitest, and Node.js test runner. Run validation scripts with `.github/test/validate-all-frameworks.sh` or `.github/test/validate-all-frameworks.ps1`.
+
 - ✅ **[Build a Node.js app for Azure Cosmos DB in Visual Studio Code](https://docs.microsoft.com/learn/modules/build-node-cosmos-app-vscode/?WT.mc_id=javascript-111027-gllemos)**
 
 - ✅ **[Automate Node.js deployments with Azure Pipelines](https://docs.microsoft.com/learn/modules/deploy-nodejs/?WT.mc_id=javascript-111027-gllemos)**
