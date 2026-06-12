@@ -45,6 +45,48 @@ Because learning is a never-ending journey, we want to help you as much as we ca
 
 - ✅ **[Create a bot with the Bot Framework SDK for JavaScript](https://docs.microsoft.com/azure/bot-service/javascript/bot-builder-javascript-quickstart?WT.mc_id=javascript-111027-gllemos)**
 
+## 🧪 Testing Utilities
+
+This repository includes scripts to validate and maintain test framework dependencies:
+
+### Validation Script: `validate-all-frameworks.sh`
+**Location:** `.github/test/validate-all-frameworks.sh`
+
+Validates that all three test frameworks (Node.js Test Runner, Jest, and Vitest) work correctly with the test samples from the [Testing Azure SDK Integration article](https://learn.microsoft.com/en-us/azure/developer/javascript/sdk/test-sdk-integration?tabs=test-with-node-testrunner).
+
+**Usage:**
+```bash
+bash .github/test/validate-all-frameworks.sh
+```
+
+**What it does:**
+- Installs dependencies for `test-with-node-testrunner`, `test-with-jest`, and `test-with-vitest`
+- Builds projects (if needed)
+- Runs tests and reports pass/fail status with color-coded output
+- Returns exit code 0 if all pass, 1 if any fail
+
+### Dependency Refresh Script: `install.sh`
+**Location:** `.github/test/install.sh`
+
+Refreshes npm dependencies for all three test framework subdirectories to the latest compatible versions while preserving package metadata and scripts.
+
+**Usage:**
+```bash
+bash .github/test/install.sh
+```
+
+**What it does:**
+- Backs up each `package.json` to `package.old.json` (for reference)
+- Extracts all dependencies and dev-dependencies
+- Runs clean `npm install` in each directory
+- Updates `package.json` with latest compatible versions
+- Preserves package metadata (name, version, scripts, type, license)
+
+**Output:**
+- Updated `package.json` files with newer dependency versions
+- Fresh `package-lock.json` files
+- Backup files at `package.old.json` for comparison
+
 ## 💻 Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
