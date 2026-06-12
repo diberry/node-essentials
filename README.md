@@ -29,7 +29,7 @@ And if you need to learn or improve your JavaScript skills, take a look at the [
 
 Because learning is a never-ending journey, we want to help you as much as we can to get you ready for what's coming next. You'll find here a great collection of resources you can use to build your knowledge.
 
-- ✅ **[How to Test Azure SDK Integration in JavaScript Applications](https://learn.microsoft.com/en-us/azure/developer/javascript/sdk/test-sdk-integration?tabs=test-with-node-testrunner)** — Learn testing best practices with Jest, Vitest, and Node.js test runner. Run validation scripts with `.github/test/validate-all-frameworks.sh` or `.github/test/validate-all-frameworks.ps1`.
+- ✅ **[How to Test Azure SDK Integration in JavaScript Applications](https://learn.microsoft.com/en-us/azure/developer/javascript/sdk/test-sdk-integration?tabs=test-with-node-testrunner)** — Learn testing best practices with Jest, Vitest, and Node.js test runner. Use `.github/test/refresh-and-validate.sh` for an end-to-end refresh plus verification run, or `.github/test/validate-all-frameworks.sh` to run the framework tests only.
 
 - ✅ **[Build a Node.js app for Azure Cosmos DB in Visual Studio Code](https://docs.microsoft.com/learn/modules/build-node-cosmos-app-vscode/?WT.mc_id=javascript-111027-gllemos)**
 
@@ -47,45 +47,11 @@ Because learning is a never-ending journey, we want to help you as much as we ca
 
 ## 🧪 Testing Utilities
 
-This repository includes scripts to validate and maintain test framework dependencies:
+Use the scripts in `.github/test/` to maintain the three test sample workspaces:
 
-### Validation Script: `validate-all-frameworks.sh`
-**Location:** `.github/test/validate-all-frameworks.sh`
-
-Validates that all three test frameworks (Node.js Test Runner, Jest, and Vitest) work correctly with the test samples from the [Testing Azure SDK Integration article](https://learn.microsoft.com/en-us/azure/developer/javascript/sdk/test-sdk-integration?tabs=test-with-node-testrunner).
-
-**Usage:**
-```bash
-bash .github/test/validate-all-frameworks.sh
-```
-
-**What it does:**
-- Installs dependencies for `test-with-node-testrunner`, `test-with-jest`, and `test-with-vitest`
-- Builds projects (if needed)
-- Runs tests and reports pass/fail status with color-coded output
-- Returns exit code 0 if all pass, 1 if any fail
-
-### Dependency Refresh Script: `install.sh`
-**Location:** `.github/test/install.sh`
-
-Refreshes npm dependencies for all three test framework subdirectories to the latest compatible versions while preserving package metadata and scripts.
-
-**Usage:**
-```bash
-bash .github/test/install.sh
-```
-
-**What it does:**
-- Backs up each `package.json` to `package.old.json` (for reference)
-- Extracts all dependencies and dev-dependencies
-- Runs clean `npm install` in each directory
-- Updates `package.json` with latest compatible versions
-- Preserves package metadata (name, version, scripts, type, license)
-
-**Output:**
-- Updated `package.json` files with newer dependency versions
-- Fresh `package-lock.json` files
-- Backup files at `package.old.json` for comparison
+- `bash .github/test/install.sh` — Validates each sample `package.json`, refreshes workspace dependencies to the latest compatible versions, rewrites the sample manifests from the workspace lockfile, and removes transient `package.old.json` backups after success.
+- `bash .github/test/validate-all-frameworks.sh` — Installs, builds when needed, and tests the Node.js test runner, Jest, and Vitest samples.
+- `bash .github/test/refresh-and-validate.sh` — Runs `install.sh` first and then `validate-all-frameworks.sh` for a single refresh-plus-verification workflow.
 
 ## 💻 Contributing
 

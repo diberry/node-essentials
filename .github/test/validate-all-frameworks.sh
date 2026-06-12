@@ -60,7 +60,7 @@ for framework_config in "${FRAMEWORKS[@]}"; do
     
     # Step 1: npm install
     echo -e "  ${GRAY}[1/3] Installing dependencies...${NC}"
-    if npm install > /dev/null 2>&1; then
+    if npm install; then
         echo -e "  ${GREEN}✅ Dependencies installed${NC}"
         DETAILS+=("npm install: OK")
     else
@@ -72,7 +72,7 @@ for framework_config in "${FRAMEWORKS[@]}"; do
     # Step 2: Build (if needed)
     if [ "$BUILD_STEP" = "true" ]; then
         echo -e "  ${GRAY}[2/3] Building...${NC}"
-        if npm run build > /dev/null 2>&1; then
+        if npm run build; then
             echo -e "  ${GREEN}✅ Build successful${NC}"
             DETAILS+=("npm run build: OK")
         else
@@ -86,7 +86,7 @@ for framework_config in "${FRAMEWORKS[@]}"; do
     
     # Step 3: Run tests
     echo -e "  ${GRAY}[3/3] Running tests...${NC}"
-    if npm test > /dev/null 2>&1; then
+    if npm test; then
         echo -e "  ${GREEN}✅ Tests passed${NC}"
         DETAILS+=("npm test: OK")
     else
